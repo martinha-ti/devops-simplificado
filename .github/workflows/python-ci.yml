@@ -3,26 +3,25 @@ name: Testes Automatizados
 on:
   push:
     branches:
-      - main  # Executa o workflow em qualquer commit na branch 'main'
+      - main
 
 jobs:
-  test:  # Nome do job
-    runs-on: ubuntu-latest  # Ambiente onde o workflow será executado
+  test:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout do Código
-      uses: actions/checkout@v3  # Baixa o código do repositório
+      uses: actions/checkout@v3
 
     - name: Configurar Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'  # Versão do Python a ser usada
+        python-version: '3.9'
 
     - name: Instalar Dependências
       run: |
-        python -m pip install --upgrade pip  # Atualiza o pip
-        pip install pytest  # Instala o pytest para rodar os testes
+        python -m pip install --upgrade pip
+        pip install pytest
 
     - name: Rodar os Testes
-      run: |
-        pytest  # Executa os testes presentes no repositório
+      run: pytest
